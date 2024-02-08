@@ -3,7 +3,7 @@ export default async ({ req, res, log, error }) => {
     return res.status(405).send("Method Not Allowed");
   }
 
-  log(req.bodyRaw);
+  log(req.body);
 
   const response = await fetch(
     "https://tthyuff4cahyj9kj.eu-west-1.aws.endpoints.huggingface.cloud",
@@ -14,7 +14,7 @@ export default async ({ req, res, log, error }) => {
         "Content-Type": "image/jpeg",
       },
       method: "POST",
-      body: req.bodyRaw,
+      body: req.body,
     }
   );
   const result = await response.json();
